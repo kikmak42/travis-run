@@ -59,6 +59,6 @@ class LogoutResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

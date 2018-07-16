@@ -31,14 +31,14 @@ class ProfileTransAuthOnlyType extends ProfileTransOrderType implements \JsonSer
                 }
                 else if ($classDetails->className === 'DateTime'){
                     // echo($value->format('Y-m-d H:i:s')."\n");
-                    $dateTime = $value->format('Y-m-d\TH-i-s\Z');
+                    $dateTime = $value->format('Y-m-d\TH:i:s\Z');
                     $values[$key] = $dateTime;
                     //echo($dateTime."\n");
                 }
                 if (is_array($value)){
 
                     //echo "key - $key \n";
-                    //echo "value - $value \n";
+                    //echo "value - $value \n"; 
                     if (!$classDetails->isInlineArray){
 
                         // $subKey = str_replace("Type", "", lcfirst((new \ReflectionClass($value[0]))->getShortName()));
@@ -57,7 +57,7 @@ class ProfileTransAuthOnlyType extends ProfileTransOrderType implements \JsonSer
             return array_merge(parent::jsonSerialize(), $values);
         }
     }
-
+    
     // Json Set Code
     public function set($data)
     {
@@ -108,6 +108,6 @@ class ProfileTransAuthOnlyType extends ProfileTransOrderType implements \JsonSer
             }
         }
     }
-
+    
 }
 

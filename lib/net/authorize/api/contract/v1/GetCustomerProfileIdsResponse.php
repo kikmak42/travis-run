@@ -120,6 +120,6 @@ class GetCustomerProfileIdsResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

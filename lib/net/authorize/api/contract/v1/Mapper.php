@@ -70,7 +70,7 @@ class Mapper{
             }
             $obj->className = $className;
             $obj->isCustomDefined = stripos($className, '\\') !== false;
-
+            
 			return $obj;
 		}
 		else if(get_parent_class($class)){
@@ -81,7 +81,7 @@ class Mapper{
 //		 		return 'string';
 //		 }
 //		 else if ($property == "messages" ){
-//
+//             
 //		 		$className = 'net\authorize\api\contract\v1\MessagesType';
 //             $obj->className = $className;
 //            $obj->isCustomDefined = stripos($className, '\\') !== false;
@@ -95,11 +95,11 @@ class Mapper{
 		}
 		// return $this->classes[$classname]['properties'][$property]['type'];
 	}
-
+    
     public function getXmlName(string $class){
         if(isset($this->classes[$class]['xml_root_name'])){
             return $this->classes[$class]['xml_root_name'];
-        }
+        }        
     }
 }
 //echo $classes['net\authorize\api\contract\v1\ANetApiRequestType']['properties']['merchantAuthentication']['type']."\n";

@@ -86,6 +86,6 @@ class UpdateCustomerPaymentProfileResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

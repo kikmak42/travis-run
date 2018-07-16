@@ -147,6 +147,6 @@ class GetCustomerProfileResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

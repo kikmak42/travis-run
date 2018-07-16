@@ -59,6 +59,6 @@ class UpdateCustomerProfileResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

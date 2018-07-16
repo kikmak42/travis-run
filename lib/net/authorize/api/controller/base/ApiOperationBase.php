@@ -115,10 +115,10 @@ abstract class ApiOperationBase implements IApiOperation
         $this->logger->debug($this->apiRequest);
         // $xmlRequest = $this->serializer->serialize($this->apiRequest, 'xml');
         //$requestArray = [lcfirst((new \ReflectionClass($this->apiRequest))->getShortName()) => $this->apiRequest];
-
+        
         $requestRoot = (new \net\authorize\api\contract\v1\Mapper)->getXmlName((new \ReflectionClass($this->apiRequest))->getName());
         $requestArray = [$requestRoot => $this->apiRequest];
-
+	
         $this->logger->info("Request  Creation End");
         /*
                 //$xmlRequest = '<?xml version="1.0" encoding="UTF-8"?>  <ARBGetSubscriptionListRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">  <merchantAuthentication>  <name>4YJmeW7V77us</name>  <transactionKey>4qHK9u63F753be4Z</transactionKey>  </merchantAuthentication>  <refId><![CDATA[ref1416999093]]></refId>  <searchType><![CDATA[subscriptionActive]]></searchType>  <sorting>  <orderBy><![CDATA[firstName]]></orderBy>  <orderDescending>false</orderDescending>  </sorting>  <paging>  <limit>10</limit>  <offset>1</offset>  </paging>  </ARBGetSubscriptionListRequest>  ';
@@ -137,7 +137,7 @@ abstract class ApiOperationBase implements IApiOperation
         //decoding json and removing bom
         $response = json_decode( substr($jsonResponse,3), true);
         $this->apiResponse = new $this->apiResponseType();
-        $this->apiResponse->set($response);
+        $this->apiResponse->set($response);  
 
         $this->afterExecute();
     }

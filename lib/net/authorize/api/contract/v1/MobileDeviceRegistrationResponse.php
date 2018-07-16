@@ -59,6 +59,6 @@ class MobileDeviceRegistrationResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

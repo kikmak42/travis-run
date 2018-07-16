@@ -69,8 +69,8 @@ class TestRunner extends PHPUnit\Framework\TestCase
             if (trim($line)) {
                 list($apiName, $isDependent, $shouldRun)=explode(",", $line);
                 $apiName = trim($apiName);
-                // echo "\nApi name: " . $apiName."\n";
-                fwrite(STDOUT, print_r("\nApi name: " . $apiName, TRUE));
+                fwrite(STDOUT, print_r("Api name: " . $apiName . "\n", TRUE));
+                echo "\nApi name: " . $apiName."\n";
             }
             if ($apiName && (false === strpos($apiName, SAMPLE_CODE_NAME_HEADING))) {
                 echo "should run:".$shouldRun."\n";
@@ -88,8 +88,8 @@ class TestRunner extends PHPUnit\Framework\TestCase
                         }
 
                         //request the api
-                        // echo "Running sample: " . $sampleMethodName . "\n";
-                        fwrite(STDOUT, print_r("Running sample: " . $sampleMethodName , TRUE));
+                        echo "Running sample: " . $sampleMethodName . "\n";
+                        //fwrite(STDOUT, print_r("Running sample: " . $sampleMethodName , TRUE));
 
                         $response = call_user_func($sampleMethodName);
 

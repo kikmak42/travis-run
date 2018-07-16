@@ -120,6 +120,6 @@ class GetSettledBatchListResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

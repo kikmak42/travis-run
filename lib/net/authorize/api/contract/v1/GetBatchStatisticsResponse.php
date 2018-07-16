@@ -86,6 +86,6 @@ class GetBatchStatisticsResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

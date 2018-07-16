@@ -147,6 +147,6 @@ class GetTransactionListResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

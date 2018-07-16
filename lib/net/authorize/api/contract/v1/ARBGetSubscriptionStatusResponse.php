@@ -86,6 +86,6 @@ class ARBGetSubscriptionStatusResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

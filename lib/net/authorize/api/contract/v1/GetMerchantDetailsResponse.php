@@ -472,6 +472,6 @@ class GetMerchantDetailsResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

@@ -167,6 +167,6 @@ class DecryptPaymentDataResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

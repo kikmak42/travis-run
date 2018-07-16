@@ -10,7 +10,7 @@ class SensitiveDataConfigType
 	 * @SerializedName("sensitiveTags")
      */
 	public $sensitiveTags;
-
+	
 	/**
      * @Type("array<string>")
 	 * @SerializedName("sensitiveStringRegexes")

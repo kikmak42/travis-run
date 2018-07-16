@@ -59,6 +59,6 @@ class ErrorResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

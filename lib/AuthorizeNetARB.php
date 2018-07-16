@@ -21,7 +21,7 @@ class AuthorizeNetARB extends AuthorizeNetRequest
 
     private $_request_type;
     private $_request_payload;
-
+    
     /**
      * Optional. Used if the merchant wants to set a reference ID.
      *
@@ -31,7 +31,7 @@ class AuthorizeNetARB extends AuthorizeNetRequest
     {
         $this->_request_payload = ($refId ? "<refId>$refId</refId>" : "");
     }
-
+    
     /**
      * Create an ARB subscription
      *
@@ -45,7 +45,7 @@ class AuthorizeNetARB extends AuthorizeNetRequest
         $this->_request_payload .= $subscription->getXml();
         return $this->_sendRequest();
     }
-
+    
     /**
      * Update an ARB subscription
      *
@@ -89,7 +89,7 @@ class AuthorizeNetARB extends AuthorizeNetRequest
         $this->_request_payload .= "<subscriptionId>$subscriptionId</subscriptionId>";
         return $this->_sendRequest();
     }
-
+    
      /**
      * Create an ARB subscription
      *
@@ -108,14 +108,14 @@ class AuthorizeNetARB extends AuthorizeNetRequest
      *
      *
      * @param string $response
-     *
+     * 
      * @return AuthorizeNetARB_Response
      */
     protected function _handleResponse($response)
     {
         return new AuthorizeNetARB_Response($response);
     }
-
+    
     /**
      * @return string
      */
@@ -123,7 +123,7 @@ class AuthorizeNetARB extends AuthorizeNetRequest
     {
         return ($this->_sandbox ? self::SANDBOX_URL : self::LIVE_URL);
     }
-
+    
     /**
      * Prepare the XML document for posting.
      */
@@ -140,7 +140,7 @@ class AuthorizeNetARB extends AuthorizeNetRequest
 </ARB{$this->_request_type}>
 XML;
     }
-
+    
 }
 
 
@@ -160,7 +160,7 @@ class AuthorizeNetARB_Response extends AuthorizeNetXMLResponse
     {
         return $this->_getElementContents("subscriptionId");
     }
-
+    
     /**
      * @return string
      */

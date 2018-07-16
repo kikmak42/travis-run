@@ -113,6 +113,6 @@ class GetAUJobDetailsResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

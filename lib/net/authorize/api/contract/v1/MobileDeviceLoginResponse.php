@@ -174,6 +174,6 @@ class MobileDeviceLoginResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

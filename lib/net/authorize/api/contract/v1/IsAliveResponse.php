@@ -59,6 +59,6 @@ class IsAliveResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

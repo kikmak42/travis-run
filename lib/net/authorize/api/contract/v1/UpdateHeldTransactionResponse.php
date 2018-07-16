@@ -88,6 +88,6 @@ class UpdateHeldTransactionResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

@@ -150,6 +150,6 @@ class GetCustomerPaymentProfileListResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

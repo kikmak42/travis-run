@@ -86,6 +86,6 @@ class GetHostedPaymentPageResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

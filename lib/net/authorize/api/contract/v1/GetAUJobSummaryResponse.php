@@ -120,6 +120,6 @@ class GetAUJobSummaryResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

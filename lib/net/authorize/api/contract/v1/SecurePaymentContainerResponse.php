@@ -86,6 +86,6 @@ class SecurePaymentContainerResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

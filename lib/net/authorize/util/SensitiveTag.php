@@ -14,19 +14,19 @@ class SensitiveTag
 	 * @SerializedName("tagName")
      */
     public $tagName;
-
+	
 	/**
      * @Type("string")
 	 * @SerializedName("pattern")
      */
     public $pattern;
-
+	
 	/**
      * @Type("string")
 	 * @SerializedName("replacement")
      */
     public $replacement;
-
+	
 	/**
      * @Type("boolean")
 	 * @SerializedName("disableMask")

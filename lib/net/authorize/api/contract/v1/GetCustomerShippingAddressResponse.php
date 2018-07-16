@@ -174,6 +174,6 @@ class GetCustomerShippingAddressResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 

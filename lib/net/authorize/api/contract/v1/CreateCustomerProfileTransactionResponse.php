@@ -115,6 +115,6 @@ class CreateCustomerProfileTransactionResponse extends ANetApiResponseType
             }
         }
     }
-
+    
 }
 
