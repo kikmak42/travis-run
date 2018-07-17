@@ -69,14 +69,15 @@ class TestRunner extends PHPUnit\Framework\TestCase
             if (trim($line)) {
                 list($apiName, $isDependent, $shouldRun)=explode(",", $line);
                 $apiName = trim($apiName);
-                fwrite(STDOUT, print_r("Api name: " . $apiName . "\n", TRUE));
                 echo "\nApi name: " . $apiName."\n";
+                fwrite(STDOUT, print_r("\nStarting Test: " . $apiName."\n", TRUE));
             }
             if ($apiName && (false === strpos($apiName, SAMPLE_CODE_NAME_HEADING))) {
                 echo "should run:".$shouldRun."\n";
                 if ("0" === $shouldRun) {
                     echo ":Skipping " . $apiName . "\n";
                 } else {
+                    //Try the request twice
                     for ($i=0; $i<=1; $i++) {
                         if ("0" === $isDependent) {
                             echo "not dependent\n";
@@ -86,11 +87,10 @@ class TestRunner extends PHPUnit\Framework\TestCase
                             $sampleMethodName = "TestRunner::run" . $apiName;
                             echo " is dependent\n";
                         }
-
+                            
                         //request the api
                         echo "Running sample: " . $sampleMethodName . "\n";
-                        //fwrite(STDOUT, print_r("Running sample: " . $sampleMethodName , TRUE));
-
+                        
                         $response = call_user_func($sampleMethodName);
 
                         if (($response != null) && ($response->getMessages()->getResultCode() == "Ok")) {
@@ -101,6 +101,7 @@ class TestRunner extends PHPUnit\Framework\TestCase
                     //response must be successful
                     $this->assertNotNull($response);
                     $this->assertEquals($response->getMessages()->getResultCode(), "Ok");
+                    echo $sampleMethodName . " - OK \n";
                     $runTests++;
                 }
             }
@@ -123,17 +124,17 @@ class TestRunner extends PHPUnit\Framework\TestCase
     {
         return captureFundsAuthorizedThroughAnotherChannel(self::getAmount());
     }
-
+    
     public static function runDebitBankAccount()
     {
         return debitBankAccount(self::getAmount()%98+1); //cannot debit more than 100
     }
-
+    
     public static function runChargeTokenizedCreditCard()
     {
         return chargeTokenizedCreditCard(self::getAmount());
     }
-
+    
     public static function runCreateAnAcceptPaymentTransaction()
     {
         return createAnAcceptPaymentTransaction(self::getAmount());
@@ -437,28 +438,28 @@ class TestRunner extends PHPUnit\Framework\TestCase
 
         return $profileResponse;
     }
-
+    
     // *****Transaction Reporting methods********
     public static function runGetTransactionDetails()
     {
             $response = authorizeCreditCard(self::getAmount());
             return getTransactionDetails($response->getTransactionResponse()->getTransId());
     }
-
+    
     public static function runGetSettledBatchList()
     {
         $lastSettlementDate=new DateTime();  // current time
         $lastSettlementDate->format("Y-m-d\TH:i:s\Z");
         $lastSettlementDate->setTimezone(new DateTimeZone('UTC'));
-
+        
         $firstSettlementDate=new DateTime();
         $firstSettlementDate->format("Y-m-d\TH:i:s\Z");
         $firstSettlementDate->setTimezone(new DateTimeZone('UTC'));
         $firstSettlementDate->sub(new DateInterval('P28D'));
-
+        
         return getSettledBatchList($firstSettlementDate, $lastSettlementDate);
     }
-
+    
     public static function runGetBatchStatistics()
     {
         $response = getBatchStatistics(self::runGetSettledBatchList()->getBatchList()[0]->getBatchId());

@@ -71,9 +71,11 @@ class CreateCustomerProfileRequest extends ANetApiRequestType
         });
         // echo __CLASS__ . "\n";
         foreach($values as $key => $value){
-            $classDetails = (new \net\authorize\api\contract\v1\Mapper)->getClass(get_class() , $key);
+            //$classDetails = (new \net\authorize\api\contract\v1\Mapper)->getClass(get_class() , $key);
+            //$classDetails = (\net\authorize\api\contract\v1\Mapper::Instance())->getClass(get_class() , $key);
+            $classDetails = (\net\authorize\util\Mapper::Instance())->getClass(get_class() , $key);
             if (isset($value)){
-                $classDetails = (new \net\authorize\api\contract\v1\Mapper)->getClass(get_class() , $key);
+                //$classDetails = (new \net\authorize\api\contract\v1\Mapper)->getClass(get_class() , $key);
                 if ($classDetails->className === 'Date'){
                     // echo($value->format('Y-m-d H:i:s')."\n");
                     $dateTime = $value->format('Y-m-d');
