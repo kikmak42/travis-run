@@ -2,7 +2,7 @@
   require 'vendor/autoload.php';
   use net\authorize\api\contract\v1 as AnetAPI;
   use net\authorize\api\controller as AnetController;
-
+  
   define("AUTHORIZENET_LOG_FILE", "phplog");
 
   function getSubscription($subscriptionId)
@@ -12,24 +12,24 @@
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
     $merchantAuthentication->setName(\SampleCode\Constants::MERCHANT_LOGIN_ID);
     $merchantAuthentication->setTransactionKey(\SampleCode\Constants::MERCHANT_TRANSACTION_KEY);
-
+    
     // Set the transaction's refId
     $refId = 'ref' . time();
-
+		
     // Creating the API Request with required parameters
     $request = new AnetAPI\ARBGetSubscriptionRequest();
     $request->setMerchantAuthentication($merchantAuthentication);
     $request->setRefId($refId);
     $request->setSubscriptionId($subscriptionId);
     $request->setIncludeTransactions(true);
-
+	    
     // Controller
     $controller = new AnetController\ARBGetSubscriptionController($request);
-
+		
     // Getting the response
     $response = $controller->executeWithApiResponse( \net\authorize\api\constants\ANetEnvironment::SANDBOX);
-
-    if ($response != null)
+		
+    if ($response != null) 
     {
         if($response->getMessages()->getResultCode() == "Ok")
         {
@@ -43,14 +43,16 @@
         	echo "Customer Profile ID: " .  $response->getSubscription()->getProfile()->getCustomerProfileId() . "\n";
         	echo "Customer payment Profile ID: ". $response->getSubscription()->getProfile()->getPaymentProfile()->getCustomerPaymentProfileId() . "\n";
                 $transactions = $response->getSubscription()->getArbTransactions();
-                foreach ($transactions as $transaction) {
-                    echo "Transaction ID : ".$transaction->getTransId()." -- ".$transaction->getResponse()." -- Pay Number : ".$transaction->getPayNum()."\n";
-                }
+                if($transactions != null){
+			         foreach ($transactions as $transaction) {
+                    		echo "Transaction ID : ".$transaction->getTransId()." -- ".$transaction->getResponse()." -- Pay Number : ".$transaction->getPayNum()."\n";
+                	}
+		      }
         }
         else
         {
         	// Error
-        	echo "ERROR :  Invalid response\n";
+        	echo "ERROR :  Invalid response\n";	
         	$errorMessages = $response->getMessages()->getMessage();
           echo "Response : " . $errorMessages[0]->getCode() . "  " .$errorMessages[0]->getText() . "\n";
         }
