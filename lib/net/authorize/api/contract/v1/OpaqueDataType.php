@@ -103,7 +103,8 @@ class OpaqueDataType implements \JsonSerializable
         foreach($values as $key => $value){
             //$classDetails = (new \net\authorize\api\contract\v1\Mapper)->getClass(get_class() , $key);
             //$classDetails = (\net\authorize\api\contract\v1\Mapper::Instance())->getClass(get_class() , $key);
-            $classDetails = (\net\authorize\util\Mapper::Instance())->getClass(get_class() , $key);
+            $mapper = \net\authorize\util\Mapper::Instance();
+            $classDetails = $mapper->getClass(get_class() , $key);
             if (isset($value)){
                 //$classDetails = (new \net\authorize\api\contract\v1\Mapper)->getClass(get_class() , $key);
                 if ($classDetails->className === 'Date'){
@@ -149,7 +150,8 @@ class OpaqueDataType implements \JsonSerializable
             //$classname = (new net\authorize\api\contract\v1\Mapper)->getClass(get_class() , $key);
             //$classDetails = (new \net\authorize\api\contract\v1\Mapper)->getClass(get_class() , $key);
             //$classDetails = (\net\authorize\api\contract\v1\Mapper::Instance())->getClass(get_class() , $key);
-            $classDetails = (\net\authorize\util\Mapper::Instance())->getClass(get_class() , $key);
+            $mapper = \net\authorize\util\Mapper::Instance();
+            $classDetails = $mapper->getClass(get_class() , $key);
             //if (substr($classname, 0, 5) === "array") {
             //  $classname = ltrim($classname, 'array<');
             //    $classname = rtrim($classname, '>');
