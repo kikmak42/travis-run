@@ -107,7 +107,7 @@ class Mapper{
 		// return $this->classes[$classname]['properties'][$property]['type'];
 	}
 
-    public function getXmlName(string $class){
+    public function getXmlName($class){
         if(isset($this->classes[$class]['xml_root_name'])){
             return $this->classes[$class]['xml_root_name'];
         }
