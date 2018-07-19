@@ -12,8 +12,9 @@ CreateVisaCheckoutTransaction,0,0
 CaptureFundsAuthorizedThroughAnotherChannel,1,1
 AuthorizeCreditCard,1,1
 DebitBankAccount,1,1
+CreditBankAccount,1,1
 ChargeTokenizedCreditCard,0,0
-PayPalAuthorizeOnly,1,0
+PayPalAuthorizeOnly,1,1
 GetListOfSubscriptions,0,1
 GetUnsettledTransactionList,0,1
 GetBatchStatistics,1,1
@@ -36,7 +37,6 @@ GetTransactionDetails,1,1
 CapturePreviouslyAuthorizedgetAmount,1,0
 RefundTransaction,1,0
 VoidTransaction,1,1
-CreditBankAccount,1,0
 ChargeCustomerProfile,1,1
 PayPalVoid,1,0
 PayPalAuthorizeCapture,1,1
